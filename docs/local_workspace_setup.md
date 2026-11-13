@@ -1,8 +1,6 @@
 # Using the standalone Scout folder
 
-This project was separated from the earlier Ops Sentinel workspace. **Keep
-both folders and your local files intact.** Do not delete or reset a Git
-repository to move case history.
+This project was separated from the earlier Ops Sentinel workspace.
 
 For a fresh checkout:
 
