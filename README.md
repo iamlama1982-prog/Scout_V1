@@ -1,7 +1,7 @@
 # Scout — AI-assisted incident investigator 🧭
 
 
-**Submission version:** Scout_V1 contains the final project snapshot. The original [Scout development repository](https://github.com/iamlama1982-prog/Scout) retains the full development and testing history for the Git assessment criterion. I used AI-assisted development to implement and debug parts of Scout; the original project history and evaluation limitations remain available.
+**Submission version:** Scout_V1 contains the final project snapshot. The original [Scout development repository] retains the full development and testing history for the Git assessment criterion. 
 
 **Ironhack Data Science & Machine Learning · Project 3 · LLM track (RAG)**
 
