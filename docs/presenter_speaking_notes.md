@@ -1,6 +1,6 @@
 # Scout — my speaking notes
 
-These are separate from the app. Use them as prompts, not a script to race through.
+These are separate from the app. 
 
 ## Act 1 — Intro to Scout (about 2½ minutes)
 
