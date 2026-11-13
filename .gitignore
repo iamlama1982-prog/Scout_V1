@@ -1,0 +1,45 @@
+# Local published data, saved case history and evaluation runs
+/data/**
+!/data/README.md
+/outputs/**
+!/outputs/README.md
+/models/
+/chroma*/
+/mlruns/
+/mlflow.db
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.joblib
+*.pkl
+*.safetensors
+
+# Keys, local settings and machine-specific paths
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+.streamlit/config.toml
+.vscode/
+.idea/
+
+# Python, notebooks and test artefacts
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# OS and logs
+.DS_Store
+Thumbs.db
+*.log

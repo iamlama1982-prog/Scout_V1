@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="430" viewBox="0 0 850 430" role="img" aria-label="Provisional raw Llama 3.2 evaluation, source availability versus answer correctness">
+<rect width="850" height="430" rx="12" fill="#F8FAF9"/>
+<text x="36" y="42" font-family="Arial,sans-serif" font-size="23" font-weight="bold" fill="#1A3834">When RAG has evidence, does the answer use it?</text>
+<text x="36" y="67" font-family="Arial,sans-serif" font-size="14" fill="#506864">Raw Llama 3.2 on 12 source-linked questions · provisional assessment</text>
+<text x="342" y="131" text-anchor="end" font-family="Arial,sans-serif" font-size="15" fill="#233C39">Target retrieved for Llama</text>
+<rect x="360" y="108" width="380" height="32" rx="4" fill="#E3EBE8"/>
+<rect x="360" y="108" width="253.33333333333334" height="32" rx="4" fill="#3E786F"/>
+<text x="755" y="131" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#183632">8/12</text>
+<text x="342" y="204" text-anchor="end" font-family="Arial,sans-serif" font-size="15" fill="#233C39">Factual answer correct</text>
+<rect x="360" y="181" width="380" height="32" rx="4" fill="#E3EBE8"/>
+<rect x="360" y="181" width="126.66666666666667" height="32" rx="4" fill="#638F89"/>
+<text x="755" y="204" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#183632">4/12</text>
+<text x="342" y="277" text-anchor="end" font-family="Arial,sans-serif" font-size="15" fill="#233C39">Target source ID cited</text>
+<rect x="360" y="254" width="380" height="32" rx="4" fill="#E3EBE8"/>
+<rect x="360" y="254" width="95" height="32" rx="4" fill="#8AACA7"/>
+<text x="755" y="277" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#183632">3/12</text>
+<text x="342" y="350" text-anchor="end" font-family="Arial,sans-serif" font-size="15" fill="#233C39">Correct answer + source cited</text>
+<rect x="360" y="327" width="380" height="32" rx="4" fill="#E3EBE8"/>
+<rect x="360" y="327" width="63.333333333333336" height="32" rx="4" fill="#B1C6C0"/>
+<text x="755" y="350" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#183632">2/12</text>
+<text x="425" y="411" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#526B66">Provisional AI-assisted review — independent human sign-off pending</text>
+</svg>

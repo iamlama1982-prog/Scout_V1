@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="390" viewBox="0 0 740 390" role="img" aria-label="Known-incident retrieval · Hit@5">
+<rect width="740" height="390" rx="15" fill="#f8faf9"/>
+<text x="32" y="38" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#183532">Known-incident retrieval · Hit@5</text>
+<text x="32" y="62" font-family="Arial,sans-serif" font-size="13" fill="#506864">Expected source appears among top five results · higher is better</text>
+<line x1="112" x2="712" y1="295" y2="295" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="300" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">0%</text>
+<line x1="112" x2="712" y1="242" y2="242" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="247" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">25%</text>
+<line x1="112" x2="712" y1="189" y2="189" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="194" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">50%</text>
+<line x1="112" x2="712" y1="136" y2="136" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="141" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">75%</text>
+<line x1="112" x2="712" y1="83" y2="83" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="88" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">100%</text>
+<rect x="230" y="136" width="118" height="159" rx="5" fill="#3c6d64"/>
+<text x="289" y="124" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="19" fill="#183532">75.0%</text>
+<text x="289" y="325" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#183532">Keyword overlap</text>
+<rect x="485" y="153.596" width="118" height="141.404" rx="5" fill="#56879e"/>
+<text x="544" y="141.596" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="19" fill="#183532">66.7%</text>
+<text x="544" y="325" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#183532">TF-IDF</text>
+<text x="370" y="368" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#506864">Source: 12 source-linked questions · November 2026 local run · provisional</text>
+</svg>

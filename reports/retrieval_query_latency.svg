@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="390" viewBox="0 0 740 390" role="img" aria-label="Average query retrieval time">
+<rect width="740" height="390" rx="15" fill="#f8faf9"/>
+<text x="32" y="38" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#183532">Average query retrieval time</text>
+<text x="32" y="62" font-family="Arial,sans-serif" font-size="13" fill="#506864">Seconds per query AFTER index construction · lower is better</text>
+<line x1="112" x2="712" y1="295" y2="295" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="300" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">0s</text>
+<line x1="112" x2="712" y1="242" y2="242" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="247" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">0.15s</text>
+<line x1="112" x2="712" y1="189" y2="189" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="194" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">0.3s</text>
+<line x1="112" x2="712" y1="136" y2="136" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="141" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">0.45s</text>
+<line x1="112" x2="712" y1="83" y2="83" stroke="#d7e1de" stroke-width="1"/>
+<text x="100" y="88" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#506864">0.6s</text>
+<rect x="230" y="100.3133333333333" width="118" height="194.6866666666667" rx="5" fill="#3c6d64"/>
+<text x="289" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="19" fill="#183532">0.551s</text>
+<text x="289" y="325" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#183532">Keyword overlap</text>
+<rect x="485" y="292.52666666666664" width="118" height="2.4733333333333576" rx="5" fill="#56879e"/>
+<text x="544" y="280.52666666666664" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="19" fill="#183532">0.007s</text>
+<text x="544" y="325" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#183532">TF-IDF</text>
+<text x="370" y="368" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#506864">Source: 12 source-linked questions · November 2026 local run · provisional</text>
+</svg>

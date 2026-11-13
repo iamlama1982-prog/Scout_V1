@@ -1,0 +1,13 @@
+question_id,expected_doc_id,keyword_hit_at_5,tfidf_hit_at_5,review_status,error_category,qualitative_observation
+Q01,INC-4acb33d61da3,true,true,provisional_source_links_not_independently_opened,none_observed,"Expected incident was among top five for both methods"
+Q02,INC-187e58c6ba0b,false,true,provisional_source_links_not_independently_opened,supplier_disambiguation,"Keyword ranked status reports by other suppliers about Azure, not Azure Communication Services"
+Q03,INC-efc3ef8974f3,true,true,provisional_source_links_not_independently_opened,none_observed,"Expected incident was among top five for both methods"
+Q04,INC-12dd1199efa6,true,true,provisional_source_links_not_independently_opened,none_observed,"Expected incident was among top five for both methods"
+Q05,INC-3e74d35c78e5,true,false,provisional_source_links_not_independently_opened,symptom_over_vendor,"TF-IDF preferred other DNS incidents rather than Gamma in Brazil"
+Q06,INC-081729dffa00,true,true,provisional_source_links_not_independently_opened,none_observed,"Expected incident was among top five for both methods"
+Q07,INC-416566f9a92c,false,false,provisional_source_links_not_independently_opened,abbreviation_and_supplier,"Both missed; source says APAC and query says Asia-Pacific, with supplier identity poorly ranked"
+Q08,INC-25672e00ee18,true,true,provisional_source_links_not_independently_opened,none_observed,"Expected incident was among top five for both methods"
+Q09,INC-1e0167bce900,true,false,provisional_source_links_not_independently_opened,paraphrase_and_ranking,"TF-IDF preferred general traffic incidents over Retell AI call latency"
+Q10,INC-5519f82f96fc,true,true,provisional_source_links_not_independently_opened,none_observed,"Expected incident was among top five for both methods"
+Q11,INC-7f1d9407f731,false,false,provisional_source_links_not_independently_opened,feature_paraphrase,"Both missed; source says Chat with us button, query says in-app support contact button"
+Q12,INC-1a91ba08c65e,true,true,provisional_source_links_not_independently_opened,none_observed,"Expected incident was among top five for both methods"

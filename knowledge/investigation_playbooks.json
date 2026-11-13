@@ -1,0 +1,185 @@
+{
+  "catalogue_name": "Scout — reviewed investigation playbooks",
+  "version": "1.0",
+  "reviewed_on": "2026-11-09",
+  "notes": "Original short, human-curated, read-only procedures. General steps are labelled as general investigation methods. Official procedures reference an existing approved KB card. No live system actions or auto-execution.",
+  "playbooks": [
+    {
+      "id": "PB-TIMELINE-01",
+      "title": "Put the failures and changes on one timeline",
+      "source_type": "general_investigation",
+      "reference_id": null,
+      "summary": "See what began first, whether the symptoms overlap and whether a deployment is a credible lead.",
+      "applies_when": "Several symptoms or a recent change could be related. No particular vendor is required.",
+      "steps": [
+        {
+          "instruction": "Collect the first and last known timestamps for each symptom, and the deployment or configuration-change time. Record the time zone for every source."
+        },
+        {
+          "instruction": "Use existing incident dashboards, audit events and application logs to compare the same time window. Avoid changing monitoring settings just to run the check."
+        },
+        {
+          "instruction": "Note whether the symptoms consistently occur together, and whether one tends to appear before another."
+        },
+        {
+          "instruction": "Look for periods when a symptom occurs alone. Those exceptions are just as useful as overlaps."
+        }
+      ],
+      "interpretation": {
+        "supports": "A repeated sequence, such as database delays first and then checkout errors, strengthens the case for a shared dependency.",
+        "weakens": "If the symptoms occur at different times or started well before the change, that weakens a single-cause explanation.",
+        "unknown": "Matching timestamps suggest a connection, but timing on its own cannot prove causation."
+      },
+      "share_back": "Tell Scout the earliest timestamp of each symptom and when the change was deployed.",
+      "reviewed_on": "2026-11-09"
+    },
+    {
+      "id": "PB-DEPENDENCIES-01",
+      "title": "Check whether the affected services share a dependency",
+      "source_type": "general_investigation",
+      "reference_id": null,
+      "summary": "Find out if the failing customer journey, API and database actually rely on the same components.",
+      "applies_when": "Multiple services could be experiencing the same underlying fault.",
+      "steps": [
+        {
+          "instruction": "Sketch the simplest route a failed request takes: user -> gateway -> application/API -> database or downstream service, using your organisation's diagrams where available."
+        },
+        {
+          "instruction": "Identify which database, pool, queue, network service or external API each affected component uses. Mark anything shared."
+        },
+        {
+          "instruction": "Compare one failing request with one successful request to see whether they pass through the same dependencies."
+        },
+        {
+          "instruction": "Do not conclude that services are linked just because their errors sound alike; look for an actual shared component."
+        }
+      ],
+      "interpretation": {
+        "supports": "If all affected requests stall at the same dependency, prioritise evidence from that component.",
+        "weakens": "If the failing paths do not share the suspected dependency, look for another explanation.",
+        "unknown": "A shared component makes a connection possible; it does not show the component is faulty."
+      },
+      "share_back": "Tell Scout which systems share the same database or service, and which ones do not.",
+      "reviewed_on": "2026-11-09"
+    },
+    {
+      "id": "PB-TRACE-01",
+      "title": "Follow one failed request from start to finish",
+      "source_type": "general_investigation",
+      "reference_id": null,
+      "summary": "Locate the first delay or failure rather than assuming the database or gateway is at fault.",
+      "applies_when": "There is an API, request, customer transaction or multi-service process to follow.",
+      "steps": [
+        {
+          "instruction": "Choose one failed request or checkout attempt and note its time, endpoint and correlation/request/trace ID if available. Don't enter real customer details into Scout."
+        },
+        {
+          "instruction": "Find the request in the gateway or API logs, then follow the same ID through any application, database-call or downstream-service traces already collected."
+        },
+        {
+          "instruction": "Compare timestamps and durations at each hop. Identify where response time first increases or where an error is first logged."
+        },
+        {
+          "instruction": "Repeat with a successful request around the same time to compare the differences."
+        }
+      ],
+      "interpretation": {
+        "supports": "If the delay begins at database calls across failed traces, database-side investigation becomes a stronger next step.",
+        "weakens": "If requests are slow before they reach the database, a database-first explanation becomes less likely.",
+        "unknown": "Without request IDs or end-to-end traces, use timestamp correlation and report that limitation."
+      },
+      "share_back": "Tell Scout which part of the request first slowed down, and how the successful request differed.",
+      "reviewed_on": "2026-11-09"
+    },
+    {
+      "id": "PB-HTTP-504-01",
+      "title": "Investigate an HTTP 504 gateway timeout",
+      "source_type": "official_documentation",
+      "reference_id": "KB-MDN-504-01",
+      "summary": "Compare gateway timeouts with upstream response times using matching request timestamps.",
+      "applies_when": "Only when the error is actually an HTTP 504 returned by a gateway or reverse proxy.",
+      "steps": [
+        {
+          "instruction": "Record the exact HTTP status (504), affected endpoint, time, and whether the problem is intermittent or consistent."
+        },
+        {
+          "instruction": "Check gateway or reverse-proxy access/error logs at that time, noting the upstream destination and measured duration if your logging system records them."
+        },
+        {
+          "instruction": "Check the corresponding upstream application logs or monitoring for delayed responses, resource pressure or connection problems."
+        },
+        {
+          "instruction": "Compare with a successful request and the configured timeout if available. Do not increase timeouts until the underlying delay is understood."
+        }
+      ],
+      "interpretation": {
+        "supports": "A gateway timeout paired with a slow upstream response supports investigating the upstream delay.",
+        "weakens": "If the upstream responds promptly but the gateway still times out, examine the proxy's connection path and its logs.",
+        "unknown": "A 504 says the gateway waited too long. It does not prove the database, network or application is the root cause."
+      },
+      "share_back": "Tell Scout the 504 timestamp and whether the upstream application logged a matching slow request.",
+      "reviewed_on": "2026-11-09"
+    },
+    {
+      "id": "PB-POSTGRES-01",
+      "title": "Inspect PostgreSQL sessions and waits",
+      "source_type": "official_documentation",
+      "reference_id": "KB-PG-STATS-01",
+      "summary": "Use a documented read-only statistics view to see active sessions and waiting work.",
+      "applies_when": "Only if the user has said the affected database is PostgreSQL and the investigating engineer has read access.",
+      "steps": [
+        {
+          "instruction": "Connect with an authorised read-only database account. Do not share credentials or sensitive query text with Scout."
+        },
+        {
+          "instruction": "Run this SELECT query in an approved SQL client to count client sessions by state and wait type. It reads pg_stat_activity; it does not change data.",
+          "command": "SELECT datname, state, wait_event_type, wait_event,\n       COUNT(*) AS sessions\nFROM pg_stat_activity\nWHERE backend_type = 'client backend'\nGROUP BY datname, state, wait_event_type, wait_event\nORDER BY sessions DESC;"
+        },
+        {
+          "instruction": "Compare the result with your normal baseline and the affected time window. A current snapshot may miss an earlier spike."
+        },
+        {
+          "instruction": "If you need to understand storage or server memory, use separate approved host or database monitoring. pg_stat_activity does not report free memory or disk space."
+        }
+      ],
+      "interpretation": {
+        "supports": "An unusually high session count, long-running activity or repeated waits during the fault may support a contention or saturation hypothesis.",
+        "weakens": "Normal session levels and no relevant waits during the fault weaken that particular explanation, but do not exclude other database issues.",
+        "unknown": "Seeing waits does not automatically identify the blocking process or prove it caused the customer failures. Visibility can depend on database permissions."
+      },
+      "share_back": "Tell Scout whether session counts or waits rose during the incident, without pasting sensitive query text.",
+      "reviewed_on": "2026-11-09"
+    },
+    {
+      "id": "PB-K8S-POD-01",
+      "title": "Check why a Kubernetes Pod is restarting",
+      "source_type": "official_documentation",
+      "reference_id": "KB-K8S-POD-01",
+      "summary": "Review Pod events and earlier container logs before proposing any changes.",
+      "applies_when": "Only if the affected workload runs in Kubernetes and the user has read-only kubectl access.",
+      "steps": [
+        {
+          "instruction": "Confirm the Pod name and namespace using the cluster's normal tooling. Use the placeholders below only after replacing them with real names."
+        },
+        {
+          "instruction": "Inspect the Pod's events, restart count, readiness and the last termination reason.",
+          "command": "kubectl describe pod <pod-name> -n <namespace>"
+        },
+        {
+          "instruction": "Inspect the previous instance's logs if the container has restarted.",
+          "command": "kubectl logs <pod-name> -n <namespace> --previous"
+        },
+        {
+          "instruction": "Compare the restart time with recent deployments, memory-limit events and health probe failures. Do not disable probes or restart workloads as an initial diagnostic step."
+        }
+      ],
+      "interpretation": {
+        "supports": "A recorded OOM kill, probe failure or application exception provides a more specific lead to test.",
+        "weakens": "If restarts predate the deployment or no relevant change occurred, the deployment explanation is less likely.",
+        "unknown": "A restart reason helps locate the failure, but it may still be a symptom of another dependency."
+      },
+      "share_back": "Tell Scout the Pod's last termination reason, restart count and any matching event, without copying credentials or secrets.",
+      "reviewed_on": "2026-11-09"
+    }
+  ]
+}

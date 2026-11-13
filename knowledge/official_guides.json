@@ -1,0 +1,296 @@
+{
+  "catalogue_name": "Ops Sentinel Project 3 - Curated Technical References",
+  "version": "1.0",
+  "reviewed_on": "2026-11-09",
+  "notes": "Original short investigation summaries and read-only checks, linking to source documentation. We do not copy vendor documentation or claim these records establish a cause or confirmed remedy. Source URLs and topics were checked on the review date; technical relevance still requires engineer judgement.",
+  "references": [
+    {
+      "id": "KB-AWS-ALB-01",
+      "title": "AWS ALB troubleshooting",
+      "publisher": "AWS",
+      "topics": "load balancer 502 503 504 upstream timeout unhealthy targets",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html",
+      "summary": "Application Load Balancer error paths, connectivity and target health.",
+      "diagnostic_checks": [
+        "Inspect load balancer status codes and access logs; compare with target-side errors.",
+        "Check target health reasons, security group path and whether targets answer health checks."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-AWS-ALB-02",
+      "title": "AWS ALB target health checks",
+      "publisher": "AWS",
+      "topics": "load balancer unhealthy targets health check readiness HTTP path",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+      "summary": "How target groups determine whether a backend is available to receive traffic.",
+      "diagnostic_checks": [
+        "Review target-group health statuses and reason codes.",
+        "Compare configured health-check path, port, protocol and expected response with the application."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-AWS-RDS-01",
+      "title": "Amazon RDS troubleshooting",
+      "publisher": "AWS",
+      "topics": "database connection refused timeout relational database RDS network storage outage",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html",
+      "summary": "Connection issues and operational symptoms affecting managed relational databases.",
+      "diagnostic_checks": [
+        "Review DB instance status, storage, memory and available connections.",
+        "Check intended endpoint, port and network reachability without changing firewall rules."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-K8S-POD-01",
+      "title": "Kubernetes debug running Pods",
+      "publisher": "Kubernetes",
+      "topics": "pod crash app logs container restart failure error Kubernetes",
+      "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+      "summary": "Techniques for inspecting pods, container behaviour and runtime failure evidence.",
+      "diagnostic_checks": [
+        "Review Pod phase, restart counts, container state and recent events.",
+        "Inspect application logs and the last terminated container's exit details where available."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-K8S-SVC-01",
+      "title": "Kubernetes debug Services",
+      "publisher": "Kubernetes",
+      "topics": "kubernetes service unreachable connection refused endpoints traffic DNS pod network",
+      "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/",
+      "summary": "Systematic diagnosis of a Kubernetes Service that cannot route to its backing Pods.",
+      "diagnostic_checks": [
+        "Check service existence, namespace, selector and EndpointSlices.",
+        "Compare Service port and targetPort with healthy backend Pod listeners."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-K8S-DNS-01",
+      "title": "Kubernetes DNS resolution",
+      "publisher": "Kubernetes",
+      "topics": "dns coredns kubernetes name lookup cannot resolve DNS NXDOMAIN",
+      "url": "https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/",
+      "summary": "Cluster name resolution checks involving client resolvers, CoreDNS and Service endpoints.",
+      "diagnostic_checks": [
+        "Inspect resolver settings and whether DNS pods are healthy.",
+        "Test relevant internal service-name resolution from the affected namespace."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-K8S-PROBE-01",
+      "title": "Kubernetes liveness readiness startup probes",
+      "publisher": "Kubernetes",
+      "topics": "readiness health check liveness startup probe failure container restart unavailable",
+      "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+      "summary": "Roles of health, readiness and startup probes in application availability.",
+      "diagnostic_checks": [
+        "Inspect configured probe paths, ports, timing and recent probe failures.",
+        "Distinguish an unready Pod from one repeatedly restarted by liveness checks."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-GKE-CRASH-01",
+      "title": "GKE CrashLoopBackOff troubleshooting",
+      "publisher": "Google Cloud",
+      "topics": "crashloopbackoff OOMKilled pod restart application error liveness probe",
+      "url": "https://docs.cloud.google.com/kubernetes-engine/docs/troubleshooting/crashloopbackoff-events",
+      "summary": "Common evidence to collect for repeatedly exiting containers in Google Kubernetes Engine.",
+      "diagnostic_checks": [
+        "Review Kubernetes events, prior container logs and termination exit codes.",
+        "Check for memory kills, recent deploys, dependency errors and probe failures."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-MS-DNS-01",
+      "title": "Windows Server DNS client troubleshooting",
+      "publisher": "Microsoft",
+      "topics": "windows server dns client ipconfig cannot resolve names network",
+      "url": "https://learn.microsoft.com/windows-server/networking/dns/troubleshoot/troubleshoot-dns-client",
+      "summary": "Client-side network configuration and DNS settings relevant to lookup failures.",
+      "diagnostic_checks": [
+        "Review the configured IP address, gateway, DNS servers and suffix.",
+        "Compare name resolution with connection testing to distinguish DNS from transport failure."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-MS-DNS-02",
+      "title": "Windows DNS name-resolution failures",
+      "publisher": "Microsoft",
+      "topics": "windows DNS lookup fails hosts file DNS client firewall port 53",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-client/networking/troubleshoot-dns-client-resolution-issues",
+      "summary": "Investigating hosts entries, unreachable resolvers and DNS request behaviour.",
+      "diagnostic_checks": [
+        "Review resolver addresses, local hosts mappings and DNS query timing.",
+        "Check whether DNS responses are missing before assuming the application itself is down."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-MS-TCP-01",
+      "title": "Windows TCP/IP troubleshooting",
+      "publisher": "Microsoft",
+      "topics": "network tcp connectivity packet loss firewall connection refused timeout server",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/troubleshoot-tcp-ip-communication-guidance",
+      "summary": "A structured approach to separating host, network-path and application-port failures.",
+      "diagnostic_checks": [
+        "Check relevant destination port reachability and the network path.",
+        "Compare source and destination observations, bearing in mind ping alone is insufficient."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-PG-STATS-01",
+      "title": "PostgreSQL activity and statistics",
+      "publisher": "PostgreSQL",
+      "topics": "postgres postgresSQL database slow query connection locks transactions activity pg_stat_activity",
+      "url": "https://www.postgresql.org/docs/current/monitoring-stats.html",
+      "summary": "Built-in statistics and session views for observing PostgreSQL workload and activity.",
+      "diagnostic_checks": [
+        "Review pg_stat_activity for active sessions, wait events and long-running queries.",
+        "Compare observed database activity and connection usage during the incident period."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-MDN-502-01",
+      "title": "HTTP 502 Bad Gateway",
+      "publisher": "MDN Web Docs",
+      "topics": "http 502 bad gateway proxy upstream invalid response API",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/502",
+      "summary": "Meaning of a gateway reporting an invalid response from its upstream server.",
+      "diagnostic_checks": [
+        "Check the failing gateway endpoint and upstream response path.",
+        "Review gateway and origin logs around the same request and timestamp."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-MDN-503-01",
+      "title": "HTTP 503 Service Unavailable",
+      "publisher": "MDN Web Docs",
+      "topics": "http 503 service unavailable overload maintenance capacity",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503",
+      "summary": "Meaning of a temporarily unavailable service, including overload or maintenance scenarios.",
+      "diagnostic_checks": [
+        "Check whether the service is in maintenance or experiencing resource pressure.",
+        "Compare error timestamps with capacity and readiness health signals."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-MDN-504-01",
+      "title": "HTTP 504 Gateway Timeout",
+      "publisher": "MDN Web Docs",
+      "topics": "http 504 timeout gateway proxy API slow upstream",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/504",
+      "summary": "Meaning of a gateway that did not receive an upstream response within the allowed time.",
+      "diagnostic_checks": [
+        "Inspect the gateway timeout and upstream application latency at matching timestamps.",
+        "Check whether network or backend response delays correlate with failures."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-MDN-429-01",
+      "title": "HTTP 429 Too Many Requests",
+      "publisher": "MDN Web Docs",
+      "topics": "http 429 too many requests rate limiting retry after throttling API",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/429",
+      "summary": "Meaning of rate-limited requests and the optional Retry-After response header.",
+      "diagnostic_checks": [
+        "Review the request rate, affected client identity and applicable published limit.",
+        "Check whether Retry-After is present before deciding on retry behaviour."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-CF-522-01",
+      "title": "Cloudflare 522 connection timeout",
+      "publisher": "Cloudflare",
+      "topics": "cloudflare 522 origin connection timed out firewall TCP unavailable",
+      "url": "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/",
+      "summary": "Cloudflare origin-connection timeouts and ways to distinguish reachability from overload.",
+      "diagnostic_checks": [
+        "Inspect origin availability and TCP connection failure metrics if available.",
+        "Check DNS origin address, security filtering and relevant origin server logs."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    },
+    {
+      "id": "KB-CF-5XX-01",
+      "title": "Cloudflare 5xx error investigation",
+      "publisher": "Cloudflare",
+      "topics": "cloudflare 500 502 503 504 520 522 HTTP server error gateway",
+      "url": "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/",
+      "summary": "Incident evidence to collect when investigating Cloudflare-fronted 5xx errors.",
+      "diagnostic_checks": [
+        "Record exact error code, request URL, timestamp and timezone.",
+        "Review available edge error analytics and relevant origin logs."
+      ],
+      "applies_to": "Use only when the affected system uses this technology; otherwise treat as general reference.",
+      "reviewed_on": "2026-11-09",
+      "review_status": "official_source_checked",
+      "content_type": "original_curated_notes_linking_to_official_guidance"
+    }
+  ]
+}

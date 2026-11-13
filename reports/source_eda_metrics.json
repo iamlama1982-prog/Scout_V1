@@ -1,0 +1,44 @@
+{
+  "source": "SevAnalysis public vendor status-page reports",
+  "licence": "CC BY-NC 4.0",
+  "filename": "incidents.csv",
+  "snapshot_label": "snapshot_2026-10-23",
+  "file_modified_utc_not_verified_download_date": "2026-11-09T07:47:05+00:00",
+  "sha256": "b8cb7c89b85db1380ea690a651a12be8437f73c4be19bf4116761c769cf24378",
+  "raw_rows": 41314,
+  "raw_columns": 21,
+  "usable_before_deduplication": 41314,
+  "rows_missing_core_fields": 0,
+  "duplicate_usable_rows": 143,
+  "prepared_rows": 41171,
+  "retention_pct": 99.65,
+  "unique_vendors": 364,
+  "distinct_titles": 30286,
+  "missing_pct_prepared": {
+    "Vendor": 0.0,
+    "Incident title": 0.0,
+    "Start time": 0.0,
+    "Resolution time": 0.21,
+    "Impact label": 0.0,
+    "Status": 0.0,
+    "Affected components": 72.94,
+    "Original source URL": 0.0
+  },
+  "title_length_words": {
+    "p10": 3.0,
+    "median": 6.0,
+    "p90": 11.0
+  },
+  "top_12_vendor_record_share_pct": 36.23,
+  "valid_start_timestamps": 41171,
+  "missing_or_invalid_start_timestamps": 0,
+  "earliest_reported_start": "2015-11-30T12:00:00+00:00",
+  "latest_reported_start": "2026-11-08T19:30:00+00:00",
+  "impact_label_counts": {
+    "minor": 21844,
+    "major": 7890,
+    "none": 7543,
+    "critical": 3497,
+    "unknown": 397
+  }
+}
